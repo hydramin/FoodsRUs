@@ -1,12 +1,16 @@
 package controler;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Engine;
+import model.ItemBean;
 
 /**
  * Servlet implementation class Search
@@ -31,15 +35,16 @@ public class Search extends HttpServlet {
 		 * split it into words
 		 * use each word to search the database*/
 		Engine engine = Engine.getInstance();
-		
+		List<ItemBean> list;
 		String search = request.getParameter("search");
 		
 		/*call services of the Engine. pass the search terms to the engine. the method is called doSearch, doItem*/
 		/*do item returns a list of ItemBean objects*/
 		try {
-			engine.doItem(search);			
+			list = engine.doItem(search);
+			System.out.println(list.size());
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 		
 		

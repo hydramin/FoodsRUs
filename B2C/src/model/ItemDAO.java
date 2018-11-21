@@ -4,10 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ItemDAO {
+	
 	public static List<ItemBean> retrieve(String prefix) throws Exception
 	{
 		Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
@@ -22,16 +25,16 @@ public class ItemDAO {
 			
 			//String sql = "SELECT * FROM SIS WHERE SURNAME LIKE ? AND GPA >= ?";  
 			String sql = "SELECT * FROM ITEM WHERE NAME LIKE ?";
-			String pre;
+//			String pre;
 			//float min;
 			
-			if (prefix.isEmpty())
-				pre = "";
-			else
-				pre = prefix.substring(0, 1).toUpperCase() + prefix.substring(1);
+//			if (prefix.isEmpty())
+//				pre = "";
+//			else
+//				pre = prefix.substring(0, 1).toUpperCase() + prefix.substring(1);
 	
 			s = conn.prepareStatement(sql);
-			s.setString(1, pre+"%");
+			s.setString(1, "%"+prefix+"%");
 			
 			r = s.executeQuery();
 			
@@ -50,5 +53,6 @@ public class ItemDAO {
 			throw e;
 		}
 	}
+	
 	
 }

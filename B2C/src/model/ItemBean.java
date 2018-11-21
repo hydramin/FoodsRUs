@@ -16,6 +16,8 @@ public class ItemBean {
 		this.price = price;
 	}
 	
+	public ItemBean() {}
+	
 	public int getCatID() {
 		return catID;
 	}
