@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sun.xml.internal.ws.api.pipe.Engine;
+
 /**
  * Servlet implementation class Search
  */
@@ -26,7 +28,22 @@ public class Search extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		/*grab the search term
+		 * split it into words
+		 * use each word to search the database*/
+		Engine engine = Engine.getInstance();
+		
+		String search = request.getParameter("search");
+		
+		/*call services of the Engine. pass the search terms to the engine. the method is called doSearch, doItem*/
+		/*do item returns a list of ItemBean objects*/
+		try {
+			engine.doItem(search);			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
 		this.getServletContext().getRequestDispatcher("/pages/search.jspx").forward(request, response);
 	}
 
