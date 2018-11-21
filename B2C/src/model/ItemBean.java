@@ -42,6 +42,21 @@ public class ItemBean {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+	@Override
+	public boolean equals(Object obj) 
+    {    
+		if(this == obj) return true;      
+        
+		if(obj == null || obj.getClass()!= this.getClass()) return false; 
+          
+        ItemBean geek = (ItemBean) obj; 
+        
+        return (this.catID == geek.catID && 
+        		this.name == geek.name &&
+        		this.number == geek.number && 
+        		this.price == geek.price); 
+    } 
 
 	@Override
 	public String toString() {
