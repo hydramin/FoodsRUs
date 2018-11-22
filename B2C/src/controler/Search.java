@@ -35,13 +35,14 @@ public class Search extends HttpServlet {
 		 * split it into words
 		 * use each word to search the database*/
 		Engine engine = Engine.getInstance();
-		List<ItemBean> list;
+		List<ItemBean> list = null;
 		String search = request.getParameter("search");
 		
 		/*call services of the Engine. pass the search terms to the engine. the method is called doSearch, doItem*/
 		/*do item returns a list of ItemBean objects*/
 		try {
-			list = engine.doItem(search);
+			if(!search.isEmpty())
+				list = engine.doItem(search);
 			System.out.println(list.size());
 			request.setAttribute("items", list);
 		} catch (Exception e) {
