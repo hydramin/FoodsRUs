@@ -35,12 +35,14 @@ public class ItemDAO {
 			
 			String sql = "SELECT * FROM ITEM ?";
 			String query = "";
-			s = conn.prepareStatement(sql);
-			
+//			s = conn.prepareStatement(sql);
+			String p = "%";
 			for (String term : terms) {
-				query += (terms.indexOf(term) != terms.size()-1)? String.format("WHERE NAME LIKE %%s% OR ", term): String.format("WHERE NAME LIKE %%s%", term);
+				query += (terms.indexOf(term) != terms.size()-1)? String.format("WHERE NAME LIKE %s%s%s OR ",p,term,p): String.format("WHERE NAME LIKE %s%s%s", p,term,p);
 			}
-			
+			System.out.println(query);
+			sql+=" "+query;
+			s = conn.prepareStatement(sql);
 			s.setString(1, query);
 			
 			r = s.executeQuery();
