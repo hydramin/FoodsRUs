@@ -16,7 +16,7 @@
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />		
 	</head>
 	<body>
-		<jsp:include page="/common/header.jspx"/>
+		<jsp:include page='/common/header.jspx'/>
 		
 		<!-- Item bean  -->
 		<div>

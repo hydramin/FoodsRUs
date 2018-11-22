@@ -9,7 +9,6 @@
 		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
 		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
 		omit-xml-declaration="true" />
-	
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>Header</title>
@@ -20,9 +19,15 @@
 		  <div class="container">
 		  	<div class="navbar-header">
 		  		<a class="navbar-brand" href="Home.do">Foods-R-Us</a>
-		  		<ul class="nav navbar-nav navbar-right">
-			  		<li class="active"><a  href="Category.do">Categories</a></li>  		
-		  		</ul>	
+		  		<form action="Category.do" method="POST">
+		  		<select name="categories" onchange="this.form.submit()">
+					<c:forEach items="${result}" var="category">
+    					<option value="${category.name}">${category.name}</option>
+					</c:forEach>
+					<option value="Categories" selected="true">Categories</option>
+				</select>
+		  		</form>
+		  		
 		  	</div>
 		  	<div class="row">
 			  	<ul class="nav navbar-nav navbar-right">
