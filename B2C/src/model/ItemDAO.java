@@ -11,8 +11,18 @@ import java.util.List;
 
 public class ItemDAO {
 	
-	public static List<ItemBean> retrieve(String prefix) throws Exception
+	/**
+	 * @Description it searches the database using the list of search terms passed
+	 * @param a non empty list of string search terms
+	 * @return a list of ItemBean objects
+	 * @throws several exceptions*/
+	
+	
+	public static List<ItemBean> retrieve(ArrayList<String> terms) throws Exception
 	{
+		/*if the list is empty dont do any search*/
+		if (terms.isEmpty()) return new ArrayList<ItemBean>();
+		
 		Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
 		Connection conn = DriverManager.getConnection("jdbc:derby://localhost:64413/EECS;user=student;password=secret");
 		PreparedStatement s = null;
@@ -23,18 +33,15 @@ public class ItemDAO {
 			s.executeUpdate();
 			s.close();
 			
-			//String sql = "SELECT * FROM SIS WHERE SURNAME LIKE ? AND GPA >= ?";  
-			String sql = "SELECT * FROM ITEM WHERE NAME LIKE ?";
-//			String pre;
-			//float min;
-			
-//			if (prefix.isEmpty())
-//				pre = "";
-//			else
-//				pre = prefix.substring(0, 1).toUpperCase() + prefix.substring(1);
-	
+			String sql = "SELECT * FROM ITEM ?";
+			String query = "";
 			s = conn.prepareStatement(sql);
-			s.setString(1, "%"+prefix+"%");
+			
+			for (String term : terms) {
+				query += (terms.indexOf(term) != terms.size()-1)? String.format("WHERE NAME LIKE %%s% OR ", term): String.format("WHERE NAME LIKE %%s%", term);
+			}
+			
+			s.setString(1, query);
 			
 			r = s.executeQuery();
 			

@@ -34,19 +34,14 @@ public class Engine {
 		 * return the total list*/
 		ArrayList<ItemBean> total = new ArrayList<>();
 		String split[] = searchTerm.split("[\\s+]|[,+]");
+		ArrayList<String> terms = new ArrayList<>();
 		for (String term : split) {
 			if(!term.isEmpty()) {
-				/*call retrieve() and access the list of items 
-				 * gathered related to the current search term
-				 * */
-				List<ItemBean> list = ItemDAO.retrieve(term);
-				for (ItemBean itemBean : list) {
-					total.add(itemBean);
-				}
+				terms.add(term);				
 			}
 		}
 		
-		return total;
+		return ItemDAO.retrieve(terms);
 	}
 	
 }
