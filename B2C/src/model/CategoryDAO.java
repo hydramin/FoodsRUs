@@ -14,30 +14,28 @@ public class CategoryDAO {
 		Connection conn = DriverManager.getConnection("jdbc:derby://localhost:64413/EECS;user=student;password=secret");
 		PreparedStatement s = null;
 		ResultSet r = null;
-		
 		try
 		{
 			s = conn.prepareStatement("set schema roumani");
 			s.executeUpdate();
 			s.close();
-			
-			//String sql = "SELECT * FROM SIS WHERE SURNAME LIKE ? AND GPA >= ?";  
-			String sql = "SELECT * FROM CATEGORY WHERE NAME LIKE ?";
 			String pre;
-			//float min;
-			
-			if (prefix.isEmpty())
+			if (prefix == null)
+			{
 				pre = "";
+			}
 			else
-				pre = prefix.substring(0, 1).toUpperCase() + prefix.substring(1);
-	
+			{
+				pre = prefix;
+			}
+			String sql = "SELECT * FROM CATEGORY WHERE NAME LIKE ?";
+					
 			s = conn.prepareStatement(sql);
-			s.setString(1, pre+"%");
+			s.setString(1, "%"+pre+"%");
 			
 			r = s.executeQuery();
 			
 			List<CategoryBean> result = new ArrayList<CategoryBean>();
-			
 			while(r.next())
 			{
 				CategoryBean bean = new CategoryBean(r.getInt("ID"), r.getString("NAME"), r.getString("DESCRIPTION"), r.getBlob("PICTURE"));
