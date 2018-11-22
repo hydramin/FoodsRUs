@@ -18,7 +18,7 @@
 	<body>
 		<jsp:include page="/common/header.jspx"/>
 		
-		<div>This is the search results page. we need css</div>
+		<div>This is the search results page. we need css, yes we do!</div>
 		
 		<jsp:include page="/common/footer.jspx"/>
 	</body>
