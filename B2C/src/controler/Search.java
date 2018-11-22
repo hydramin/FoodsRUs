@@ -43,6 +43,7 @@ public class Search extends HttpServlet {
 		try {
 			list = engine.doItem(search);
 			System.out.println(list.size());
+			request.setAttribute("items", list);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

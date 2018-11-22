@@ -18,7 +18,19 @@
 	<body>
 		<jsp:include page="/common/header.jspx"/>
 		
-		<div>This is the search results page. we need css, yes we do!</div>
+		<!-- Item bean  -->
+		<div>
+			<c:if test = "${ not empty items }">
+				<div></div>
+				<c:forEach items="${items}" var="item">
+					<div border="1">${ item.catID } - 
+						${ item.name } -
+						${ item.number } - 
+						${ item.price }
+					</div>
+				</c:forEach>
+			</c:if>
+		</div>
 		
 		<jsp:include page="/common/footer.jspx"/>
 	</body>
