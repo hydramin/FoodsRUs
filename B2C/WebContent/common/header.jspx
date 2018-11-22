@@ -13,18 +13,21 @@
 	<head>
 		<title>Header</title>
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />		
+		<jsp:include page="/Header.do"/>
 	</head>
 	<body>
 		<nav class="navbar navbar-default">
 		  <div class="container">
 		  	<div class="navbar-header">
 		  		<a class="navbar-brand" href="Home.do">Foods-R-Us</a>
-		  		<form action="Category.do" method="POST">
+		  		<form action="Items.do" method="POST">
 		  		<select name="categories" onchange="this.form.submit()">
+					<c:if test="${!empty result and result.size() gt 0}">
 					<c:forEach items="${result}" var="category">
-    					<option value="${category.name}">${category.name}</option>
+    					<option value="${category.id}">${category.name}</option>
 					</c:forEach>
-					<option value="Categories" selected="true">Categories</option>
+					<option value="Categories" selected="true" onclick="this.form.submit()">Categories</option>
+					</c:if>
 				</select>
 		  		</form>
 		  		

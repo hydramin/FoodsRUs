@@ -31,21 +31,21 @@ public class Header extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		/* gets list of categories from engine
+		 * then returns results as a list that
+		 * is parsed in the jsp.				 */
 		try
 		{
 			Engine engine = Engine.getInstance();
-			List<CategoryBean> a = engine.doCategory("");
-			a.size();
-			System.out.println(a);
-			request.setAttribute("result", a);
+			List<CategoryBean> categories = engine.doCategory("");
+			request.setAttribute("result", categories);
 		}
 		catch (Exception e)
 		{
 			request.setAttribute("error", e.getMessage());
 			
 		}		
-		this.getServletContext().getRequestDispatcher("/common/header.jspx").include(request, response);
+		//this.getServletContext().getRequestDispatcher("/common/header.jspx").include(request, response);
 		
 	}
 
