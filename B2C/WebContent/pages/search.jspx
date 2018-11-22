@@ -18,7 +18,7 @@
 	<body>
 		<jsp:include page="/common/header.jspx"/>
 		
-		<div>This is the search results page</div>
+		<div>This is the search results page. RESULTS ARE DISPLAYED HERE</div>
 		
 		<jsp:include page="/common/footer.jspx"/>
 	</body>
