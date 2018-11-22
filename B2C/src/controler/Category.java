@@ -38,8 +38,7 @@ public class Category extends HttpServlet {
 				prefix = request.getParameter("prefix");
 				List<CategoryBean> a = engine.doCategory(prefix);
 				a.size();
-				request.setAttribute("result", engine.doCategory(prefix));
-				
+				request.setAttribute("result", engine.doCategory(prefix));				
 			}
 			catch (Exception e)
 			{

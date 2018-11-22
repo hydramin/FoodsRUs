@@ -20,12 +20,12 @@
 		  	<div class="navbar-header">
 		  		<a class="navbar-brand" href="Home.do">Foods-R-Us</a>
 		  		<form action="Category.do" method="POST">
-		  		<select name="categories" onchange="this.form.submit()">
-					<c:forEach items="${result}" var="category">
-    					<option value="${category.name}">${category.name}</option>
-					</c:forEach>
-					<option value="Categories" selected="true">Categories</option>
-				</select>
+			  		<select name="categories" onchange="this.form.submit()">
+						<c:forEach items="${result}" var="category">
+	    					<option value="${category.name}">${category.name}</option>
+						</c:forEach>
+						<option value="Categories" selected="true">Categories</option>
+					</select>
 		  		</form>
 		  		
 		  	</div>

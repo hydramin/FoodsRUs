@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Engine;
+import model.ItemDAO;
+
 /**
  * Servlet implementation class TestingServlet
  */
@@ -26,7 +29,13 @@ public class TestingServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		try {
+			System.out.println("aasdf asdf");
+//			ItemDAO.retrieve(6);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		this.getServletContext().getRequestDispatcher("/common/header.jspx").forward(request, response);
 		
 		
