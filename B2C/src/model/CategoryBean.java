@@ -7,13 +7,15 @@ public class CategoryBean {
 	private int id;
 	private String name;
 	private String description;
-	private Blob picture;
+	private String picture;
+	private int number;
 	
-	public CategoryBean(int id, String name, String description, Blob picture) {
+	public CategoryBean(int id, String name, String description, String picture, int number) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.picture = picture;
+		this.number = number;
 	}
 
 	public String toString()
@@ -51,13 +53,23 @@ public class CategoryBean {
 		this.name = description;
 	}
 	
-	public Blob getPicture()
+	public String getPicture()
 	{
 		return picture;
 	}
 	
-	public void setPicture(Blob picture)
+	public void setPicture(String picture)
 	{
 		this.picture = picture;
 	}
+	
+	public int getNumber()
+	{
+		return number;
+	}
+
+	public void setNumber(int number)
+	{
+		this.number = number;
+	}	
 }

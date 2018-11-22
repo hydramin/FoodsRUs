@@ -17,24 +17,15 @@
 	</head>
 	<body>
 		<jsp:include page="/common/header.jspx"/>
-		<div class="container" style="height:300px; background-color:yellow;">
-			<form method="POST" action="Category.do" role="form">
-				<c:if test="${!empty result and result.size() gt 0}">
-					<table style="margin: auto;" border="1">
-						<tr>
-							<th style="padding: 6px;">Name</th>
-							<th style="padding: 6px;">Major</th>
-							<th style="padding: 6px;">No. of Courses</th>
-							<th style="padding: 6px;">GPA</th>
-						</tr>
+		<div class="container" >
+			
+				<c:if test="${!empty result and result.size() gt 0}">			
 						<c:forEach var="e" items="${result}">
-							<tr>
-								<td style="padding: 6px;">${e.name }</td>
-							</tr>
+							<img src="data:image/gif;base64,${e.picture}" style="border:1px solid #000000" display="inline-block"></img>
+							
+							<p display="inline-block"> ${e.number} </p>
 						</c:forEach>
-					</table>
 				</c:if>		
-			</form>	
 		</div>
 		<jsp:include page="/common/footer.jspx"/>
 	</body>
