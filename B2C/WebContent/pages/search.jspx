@@ -19,14 +19,20 @@
 		<jsp:include page="/common/header.jspx"/>
 		
 		<!-- Item bean  -->
-		<div border="1">
+		<div>
 			<c:if test = "${ not empty items }">
 							
 				<c:forEach items="${items}" var="item">
-					<div border="1">${ item.catID } - 
-						${ item.name } -
-						${ item.number } - 
-						${ item.price }
+					<div style="border-style:solid;">
+						<p>${ item.name }</p>
+						<p>Product ID: ${ item.number }</p> 
+						<p>Unit Price: ${ item.price }</p>
+						<form action="Cart.do" method="POST">
+				  			<span>Quantity to purchase:</span>
+				  			<input type="number" placeholder="" name="quantity" value="${quantity}"/>
+							<input type="submit" name="updatecart" value="Add to Cart"/>
+						</form>
+						<!-- ${ item.catID }</p> -->
 					</div>
 				</c:forEach>
 				
