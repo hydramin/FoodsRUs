@@ -19,17 +19,17 @@
 		  <div class="container">
 		  	<div class="navbar-header">
 		  		<a class="navbar-brand" href="Home.do">Foods-R-Us</a>
+		  		<ul class="nav navbar-nav navbar-right">
+			  		<li class="active"><a  href="Category.do">Categories</a></li>  		
+		  		</ul>	
 		  		<form action="Items.do" method="POST">
-		  			<ul class="nav navbar-nav navbar-right">
- 			  			<li class="active"><a  href="Category.do">Categories</a></li>  		
- 		  			</ul>
+		  		
 			  		<select name="categories" onchange="this.form.submit()">
-						<c:if test="${!empty result and result.size() gt 0}">
-							<c:forEach items="${result}" var="category">
-		    					<option value="${category.id}">${category.name}</option>
-							</c:forEach>
-							<option value="Categories" selected="true" onclick="this.form.submit()">Categories</option>
-						</c:if>
+						<option value="3">Meat</option>
+						<option value="4">Cheese</option>
+						<option value="5">Ice Cream</option>
+						<option value="6">Cereal</option>
+						<option value="Categories" selected="true" onclick="this.form.submit()">Categories</option>						
 					</select>
 		  		</form>
 		  		
