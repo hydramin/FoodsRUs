@@ -16,6 +16,7 @@
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>		
 	</head>
 	<body>
+	
 		<jsp:include page="/common/header.jspx"/>
 		
 		<div class="container" style="height: 400px; background-color: rgba(255,0,0,0.1);">
