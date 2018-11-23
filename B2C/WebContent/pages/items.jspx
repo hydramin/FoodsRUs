@@ -21,16 +21,24 @@
 
 	<!-- Item bean  -->
 	<div>
-		<c:if test="${ not empty items }">
-			<div></div>
-			<c:forEach items="${items}" var="item">
-				<c:if test="${item.catID == catID}">
-					<div border="1">${ item.catID }- ${ item.name } - ${ item.number }
-						- ${ item.price }</div>
-				</c:if>
-			</c:forEach>
-		</c:if>
-	</div>
+			<c:if test = "${ not empty items }">
+							
+				<c:forEach items="${items}" var="item">
+					<div style="border-style:solid;">
+						<p>${ item.name }</p>
+						<p>Product ID: ${ item.number }</p> 
+						<p>Unit Price: ${ item.price }</p>
+						<form action="Cart.do" method="POST">
+				  			<span>Quantity to purchase:</span>
+				  			<input type="number" placeholder="" name="quantity" value="${quantity}"/>
+							<input type="submit" name="updatecart" value="Add to Cart"/>
+						</form>
+						<!-- ${ item.catID }</p> -->
+					</div>
+				</c:forEach>
+				
+			</c:if>
+		</div>
 
 	<jsp:include page="/common/footer.jspx" />
 </body>

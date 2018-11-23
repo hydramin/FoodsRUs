@@ -17,6 +17,10 @@ public class CategoryBean {
 		this.picture = picture;
 		this.number = number;
 	}
+	
+	public CategoryBean() {		
+	}
+	
 
 	public String toString()
 	{

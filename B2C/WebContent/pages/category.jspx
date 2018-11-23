@@ -18,13 +18,31 @@
 	<body>
 		<jsp:include page='/common/header.jspx'/>
 		<div class="container" >
+			<c:if test="${!empty result and result.size() gt 0}">				
+				<c:forEach var="category" items="${result}">
+					<div class="row" style="padding-top: 50px;">	
+						<div class="col-md-2">
+							<img src="data:image/gif;base64,${category.picture}" 
+								 style="width:150px; 
+									height:150px;
+									border:1px solid #000000;" 
+									display="inline-block">
+							</img>
+						</div>
+						<div class="col-md-9">
+							<p> ${category.name} </p>
+							<p> ${category.description} </p>
+							<div><a href="Items.do?categories=${category.id}">Browse category</a></div>
+						</div>
+					</div>						
+				</c:forEach>
+			</c:if>
 			
-				<c:if test="${!empty result and result.size() gt 0}">			
-						<c:forEach var="e" items="${result}">
-							<img src="data:image/gif;base64,${e.picture}" style="border:1px solid #000000" display="inline-block"></img>
-							
-							<p display="inline-block"> ${e.number} </p>
-						</c:forEach>
+				<c:if test="${!empty result and result.size() gt 0}">
+					<c:forEach var="e" items="${result}">
+						<img src="data:image/gif;base64,${e.picture}" style="border:1px solid #000000" display="inline-block"></img>
+						<p display="inline-block"> ${e.number} </p>
+					</c:forEach>
 				</c:if>		
 		</div>
 		<jsp:include page="/common/footer.jspx"/>

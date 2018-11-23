@@ -25,11 +25,13 @@
 		  		<form class="navbar-form navbar-left" action="Items.do" method="POST">
 		  		
 			  		<select name="categories" onchange="this.form.submit()">
+			<!-- since having a button and a categories link in the dropdown is redundant
+				I have removed the Category option's submission functionality: AMIN -->
+						<option selected="true" >Categories</option>						
 						<option value="3">Meat</option>
 						<option value="4">Cheese</option>
 						<option value="5">Ice Cream</option>
 						<option value="6">Cereal</option>
-						<option value="Categories" selected="true" onclick="this.form.submit()">Categories</option>						
 					</select>
 		  		</form>
 		  		
@@ -41,8 +43,8 @@
 			  	</ul>	  
 		  		<form class="navbar-form navbar-right" action="Search.do" method="POST">
 		  			<div class="form-group">
-						<input class="form-control" type="search" placeholder="Search" name="search" value="${search}"/>
-					</div>
+						<input class="form-control" type="search" placeholder="Search" name="searchTerm" value="${search}"/>
+					</div>					
 					<input class="btn btn-outline-success" type="submit" name="searchBtn" value="Search"/>
 				</form>	
 		  	</div>
