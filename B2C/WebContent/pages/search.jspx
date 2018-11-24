@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!-- <?xml version="1.0" encoding="ISO-8859-1" ?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
 		xmlns:c="http://java.sun.com/jsp/jstl/core"
 		xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
@@ -18,7 +18,7 @@
 	<body>
 		<jsp:include page="/common/header.jspx"/>
 		
-		<!-- Item bean  -->
+		
 		<div>
 			<c:if test = "${ not empty items }">
 							
@@ -42,4 +42,4 @@
 		<jsp:include page="/common/footer.jspx"/>
 	</body>
 </html>
-</jsp:root>
+</jsp:root>  -->

@@ -38,18 +38,23 @@ public class Items extends HttpServlet {
 		 * that was selected using the catID we got from the dropdown 
 		 * */
 		Engine engine = Engine.getInstance();
-		List<ItemBean> list;
-		/* if a search query is sent the searchBtn parameter will be sent,else it is empty*/
-		String catID = request.getParameter("categories"); /* intended to display the whole category*/
-		String searchBtn = request.getParameter("searchBtn"); /* is sent from the search button*/
-		String searchTerm = request.getParameter("searchTerm");
+		List<ItemBean> list = null;
+		/*drop down; in categories page, browse categories link*/
+		String catID = request.getParameter("catID"); /* is int value, intended to display the whole category*/
+		String byCategoryId = request.getParameter("byCategoryId"); /*flag true or null*/
+				
 		
-		System.out.printf("=>%s    =>%s\n",catID,searchBtn);
+		/* if a search query is sent the searchBtn parameter will be sent,else it is empty*/
+		String bySearchTerm = request.getParameter("bySearchTerm"); /* flag, true or null*/
+		String searchTerm = request.getParameter("searchTerm"); /*is sent by search bar*/
+		
+		
+		System.out.printf("=>%s    =>%s\n",catID,bySearchTerm);
 		try {
-				if(searchBtn != null) {
-					list = engine.doItem(searchTerm, searchBtn);					
-				} else {
-					list = engine.doItem(catID, null);
+				if(bySearchTerm != null) {
+					list = engine.doItem(searchTerm, bySearchTerm);					
+				} else if (byCategoryId != null) {
+					list = engine.doItem(catID, "byCategoryId");
 				}
 				request.setAttribute("items", list);
 			} catch (Exception e) {

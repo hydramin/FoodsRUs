@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.shape.Ellipse;
 
 public class Engine {
 	private static Engine instance = null;	
@@ -34,8 +33,9 @@ public class Engine {
 		 * loopthrough the array and pass a single search term to the DAO
 		 * get the list from the DAO and add the contents to the total list
 		 * return the total list*/
-		
-		if(flag != null) {
+		/*if flag is not null, then the search bar is used with multiple search words*/
+		String bySearchTerm = "bySearchTerm";
+		if(bySearchTerm.equals(flag)) {
 			String split[] = searchTerm.split("[\\s+]|[,+]");
 			ArrayList<String> terms = new ArrayList<>();
 			for (String term : split) {
@@ -45,6 +45,7 @@ public class Engine {
 			}
 			return ItemDAO.retrieve(terms);
 		} else {
+			/*if flag is null, then it is being searched by a specific identifier*/
 			/*parse the catID to int and pass it to the DAO*/
 			int catid = -1;
 			try {
