@@ -1,0 +1,18 @@
+@charset "UTF-8";
+.name {
+	font-weight: bold;
+	display:inline;
+}
+
+.number {
+	color: #D0CACA;
+	display:inline;
+}
+
+.description {
+	
+}
+
+img {
+	display:inline-block;
+}
