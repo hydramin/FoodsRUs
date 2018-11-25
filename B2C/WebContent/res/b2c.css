@@ -1,0 +1,52 @@
+@charset "UTF-8";
+body {
+   padding-top: 50px; 
+}
+
+.styled-select {
+   background: url("../res/dropdown.png") no-repeat 96% 0;
+   height: 40px;
+   overflow: hidden;
+   width: 120px;
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   height: 40px;
+   padding: 8px; 
+   width: 150px;
+   cursor: pointer;
+}
+
+.black {
+	background-color:rgba(0,0,0,0.0.75);
+}
+
+.inline {
+	display: inline-block
+}
+
+.card-title {
+	font-weight: bold;
+}
+
+.card-siz {
+	padding-left: 120px;
+	padding-right: 120px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.row-siz {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.bod-siz {
+	text-align: center;
+}
+
+.test {
+	position: absolute;
+}

@@ -12,21 +12,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>Header</title>
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />		
+		<link rel="stylesheet" href="res/b2c.css" />
 	</head>
-	<body>
-		<nav class="navbar navbar-default">
-		  <div class="container">
-		  	<div class="navbar-header">
-		  		<a class="navbar-brand" href="Home.do">Foods-R-Us</a>
-		  		<ul class="nav navbar-nav navbar-left">
-			  		<li class="active"><a  href="Category.do">Categories</a></li>  		
-		  		</ul>	
-		  		<form class="navbar-form navbar-left" action="Items.do" method="POST">
+	<body padding-bottom="70px" >
+		 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="Home.do">Foods-R-Us</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse show" id="navbarsExampleDefault" style="">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+          	<form action="Items.do" method="POST" class="drop-down styled-select black rounded">
 		  			<input type="hidden"  name="byCategoryId" value="byCategoryId" />
-			  		<select name="catID" onchange="this.form.submit()">
-			<!-- since having a button and a categories link in the dropdown is redundant
-				I have removed the Category option's submission functionality: AMIN -->
+			  		<select  name="catID" onchange="this.form.submit()">
 						<option selected="true" >Categories</option>						
 						<option value="3">Meat</option>
 						<option value="4">Cheese</option>
@@ -34,23 +41,15 @@
 						<option value="6">Cereal</option>
 					</select>
 		  		</form>
-		  		
-		  	</div>
-		  	<div class="row">
-			  	<ul class="nav navbar-nav navbar-right">
-			  		<li><a href="#">Log In</a></li>
-			  		<li><a href="#">About</a></li>	  		
-			  	</ul>	  
-		  		<form class="navbar-form navbar-right" action="Items.do" method="POST">
-		  			<div class="form-group">
-		  				<input type="hidden" name="bySearchTerm" value="bySearchTerm"/>
-						<input class="form-control" type="search" placeholder="Search" name="searchTerm" value="${search}"/>
-					</div>					
-					<input class="btn btn-outline-success" type="submit" name="searchBtn" value="Search"/>
-				</form>	
-		  	</div>
-		  </div>	   
-		</nav>
+		  </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="Items.do" method="POST">
+          <input type="hidden" name="bySearchTerm" value="bySearchTerm"/>
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" name="searchTerm" value="${search}"/>
+          <input class="btn btn-outline-success" type="submit" name="searchBtn" value="Search"/>
+        </form>
+      </div>
+    </nav>
 	</body>
 </html>
 </jsp:root>
