@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<orderType id="321" submitted="2018-11-25-05:00">
+    <customer account="new account">
+        <name>Amin</name>
+    </customer>
+    <items>
+        <item number="35">
+            <name>cheese</name>
+            <price>12</price>
+            <quantity>12</quantity>
+        </item>
+        <item number="35">
+            <name>cheese</name>
+            <price>12</price>
+            <quantity>12</quantity>
+        </item>
+    </items>
+    <total>12.300000000000000710542735760100185871124267578125</total>
+    <shipping>12</shipping>
+    <HST>1.59900000000000014699352846037072910753245373927183102191426113114491869282574043609201908111572265625</HST>
+    <grandTotal>12.300000000000000710542735760100185871124267578125</grandTotal>
+</orderType>
