@@ -33,13 +33,13 @@
           <li class="nav-item">
           	<form action="Items.do" method="POST" class="drop-down styled-select black rounded">
 		  			<input type="hidden"  name="byCategoryId" value="byCategoryId" />
-			  		<select  name="catID" onchange="this.form.submit()">
-						<option selected="true" onclick="Category.do">Categories</option>						
-						<option value="3">Meat</option>
-						<option value="4">Cheese</option>
-						<option value="5">Ice Cream</option>
-						<option value="6">Cereal</option>
+					<select  name="catID" onchange="this.form.submit()">
+						<option selected="true" onclick="Category.do">Categories</option>
+						<c:forEach items="${applicationScope['list']}" var="opt">
+							<option value="${opt.id}">${opt.name}</option>
+						</c:forEach>		
 					</select>
+					
 		  		</form>
 		  </li>
         </ul>
