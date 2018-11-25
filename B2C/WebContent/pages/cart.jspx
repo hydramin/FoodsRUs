@@ -18,8 +18,78 @@
 	<body>
 	
 		<jsp:include page="/common/header.jspx"/>
+		<c:set var="myfinal" value="0" scope="page"/>		
+		<form action="Cart.do" method="POST">
+			<div class="container">
+				<c:if test="${not empty list }">					
+
+					<div class="row" style="font-weight: bold;">
+							<div class="col-lg-2">
+								<span>Product ID</span>
+							</div>
+							<div class="col-lg-2">
+								<span>Name</span>
+							</div>
+							<div class="col-lg-2">
+								<span>Unit Price</span>
+							</div>
+							<div class="col-lg-2">
+								<span>Quantity</span>
+							</div>
+							<div class="col-lg-2">
+								<span>Total Price</span>								
+							</div>
+							<div class="col-lg-2">
+								<span>Action</span>
+							</div>
+						</div>
+						<hr/>
+
+					<c:forEach items="${list}" var="item">
+						<div class="row" style="font-size: 0.9em;">
+							<div class="col-lg-2">
+								<span>${ item.item.number }</span><br/>
+							</div>
+							<div class="col-lg-2">
+								<span>${ item.item.name }</span><br/>
+							</div>
+							<div class="col-lg-2">
+								<span>${ item.item.price }</span><br/>
+							</div>
+							<div class="col-lg-2">
+								<input size="3" value="${item.quantity}" name= "${item.item.number}_quantity" type="number"/>
+							</div>
+							<div class="col-lg-2">
+								<c:set var="total" value="${item.quantity * item.item.price }"/>
+								<c:set var="myfinal" value="${ myfinal + total }"/>								
+								<span> ${total} </span><br/>
+							</div>
+							<div class="col-lg-2">
+								Delete <input type="checkbox" name="${item.item.number}_delete" value="delete"  />
+							</div>							
+						</div>
+					</c:forEach>
+				</c:if>
+				<div class="row">
+					<input type="hidden" name="internalUpdate" value="internalUpdate" />
+					<input type="submit" name="update" value="Update"/>
+				</div>
+			</div>
+		</form>
+		<hr/>
 		
-		This is the cart page.
+		<form action="Items.do" method="POST">
+			<input type="submit" value="Continue Shopping"/>
+		</form>
+		
+		<hr/>
+		<div>
+			<p>Payment Calculation</p>
+			<p>Sub Total:  ${myfinal}</p>
+			<p>HST</p>
+			<p>Shipping Cost</p>
+			<p>Total</p>
+		</div>
 		
 		<jsp:include page="/common/footer.jspx"/>
 		

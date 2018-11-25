@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Engine;
 import model.ItemBean;
@@ -38,7 +39,9 @@ public class Items extends HttpServlet {
 		 * that was selected using the catID we got from the dropdown 
 		 * */
 		Engine engine = Engine.getInstance();
+		HttpSession session = request.getSession();
 		List<ItemBean> list = null;
+		
 		/*drop down; in categories page, browse categories link*/
 		String catID = request.getParameter("catID"); /* is int value, intended to display the whole category*/
 		String byCategoryId = request.getParameter("byCategoryId"); /*flag true or null*/
@@ -49,13 +52,28 @@ public class Items extends HttpServlet {
 		String searchTerm = request.getParameter("searchTerm"); /*is sent by search bar*/
 		
 		
+		
+		
 		System.out.printf("=>%s    =>%s\n",catID,bySearchTerm);
 		try {
+				if(bySearchTerm == null && byCategoryId == null) {
+					catID = (String) session.getAttribute("catID");
+					byCategoryId = (String) session.getAttribute("byCategoryId"); 
+					bySearchTerm = (String) session.getAttribute("bySearchTerm");
+					searchTerm = (String) session.getAttribute("searchTerm");							                    
+				}
+				
 				if(bySearchTerm != null) {
 					list = engine.doItem(searchTerm, bySearchTerm);					
 				} else if (byCategoryId != null) {
 					list = engine.doItem(catID, "byCategoryId");
 				}
+				
+				session.setAttribute("catID", catID);
+				session.setAttribute("byCategoryId", byCategoryId);
+				session.setAttribute("bySearchTerm", bySearchTerm);
+				session.setAttribute("searchTerm", searchTerm);
+				
 				request.setAttribute("items", list);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());

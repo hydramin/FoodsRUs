@@ -149,5 +149,23 @@ public class Engine {
 	public List<CategoryBean> doCategory(String prefix) throws Exception {
 		return CategoryDAO.retrieve(prefix);
 	}
+	
+	public ItemBought createItem(String productId, String productName, String unitPrice,String _quantity) {
+			
+			ItemBean itemBean = null;
+			ItemBought itemBought = new ItemBought();
+			try {
+				double price = Double.parseDouble(unitPrice);
+				int quantity = Integer.parseInt(_quantity);
+				
+				itemBean = new ItemBean(0, productId, productName, price);
+				itemBought.setItem(itemBean);
+				itemBought.setQuantity(quantity);
+			} catch (Exception e) {
+				throw e;
+			}					
+			
+			return itemBought;
+		}
 
 }

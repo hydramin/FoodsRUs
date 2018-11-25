@@ -34,7 +34,7 @@
           	<form action="Items.do" method="POST" class="drop-down styled-select black rounded">
 		  			<input type="hidden"  name="byCategoryId" value="byCategoryId" />
 			  		<select  name="catID" onchange="this.form.submit()">
-						<option selected="true" >Categories</option>						
+						<option selected="true" onclick="Category.do">Categories</option>						
 						<option value="3">Meat</option>
 						<option value="4">Cheese</option>
 						<option value="5">Ice Cream</option>

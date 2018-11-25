@@ -30,18 +30,17 @@
 						<p>Unit Price: ${ item.price }</p>
 						<form action="Cart.do" method="POST">
 				  			<span>Quantity to purchase:</span>
-				  			<input type="number" placeholder="" name="quantity" value="${quantity}"/>
+				  			<input type="number" placeholder="" name="quantity" value="1"/>
 				  			<input type="hidden" name="productName" value="${ item.name }" />
 				  			<input type="hidden" name="productId" value="${ item.number }" />
 				  			<input type="hidden" name="unitPrice" value="${ item.price }"/>
-							<input type="submit" name="updateCart" value="Add to Cart"/>
+							<input type="submit" name="addToCart" value="Add to Cart"/>
 						</form>
 						<!-- ${ item.catID }</p> -->
 					</div>
 				</c:forEach>
 				
 			</c:if>
-
 		</div>
 
 	<jsp:include page="/common/footer.jspx" />
