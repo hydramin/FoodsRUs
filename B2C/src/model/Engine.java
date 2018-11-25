@@ -81,8 +81,15 @@ public class Engine {
 
 	}
 
+	
 	public void createOrders() throws DatatypeConfigurationException, JAXBException, IOException {
-		
+		// Using an object factory, we're creating an object that'll be parsed by the marshaller to make an xml file
+		// the root xml element is order
+		// in it we have a customer with name and account (name and username)
+		// then an itemlist that contains all the items
+		// each item has a name, ID, price, and quantity, extended is price * quantity
+		// then the order has shipping cost, an order number, hst, a grand total and the date submitted
+		// right now it's just using an absolute path because it's being wacky with relative paths
 		CustomerType customer = factory.createCustomerType();
 		
 		ItemType item = factory.createItemType();
@@ -93,9 +100,10 @@ public class Engine {
 		customer.setAccount("new account");
 		item.setName("chicken");
 		item.setNumber("34");
-		item.setPrice(new BigDecimal(12.3));
-		totalPrice = item.getPrice(); 
+		item.setPrice(new BigDecimal(12.3)); 
 		item.setQuantity(BigInteger.valueOf( new Integer(3).intValue()));
+		item.setExtended(item.getPrice().multiply(new BigDecimal(item.getQuantity())));
+		totalPrice = item.getExtended();
 		List<ItemType> itemsList = items.getItem();
 		itemsList.add(item);
 		item.setName("cheese");
@@ -103,12 +111,13 @@ public class Engine {
 		item.setPrice(new BigDecimal(12));
 		item.setQuantity(BigInteger.valueOf( new Integer(12).intValue()));
 		itemsList.add(item);
-		totalPrice.add(item.getPrice());
+		item.setExtended(item.getPrice().multiply(new BigDecimal(item.getQuantity())));
+		totalPrice.add(item.getExtended());
 		order.setCustomer(customer);
 		order.setItems(items);
 		order.setTotal(totalPrice);
 		order.setShipping(new BigDecimal(12));
-		order.setHST(order.getGrandTotal().multiply(new BigDecimal(0.13)));
+		order.setHST(totalPrice.multiply(new BigDecimal(0.13)));
 		order.setGrandTotal(totalPrice.add(order.getHST().add(order.getShipping())));
 		order.setId(BigInteger.valueOf(new Integer(321).intValue()));
 		GregorianCalendar c = new GregorianCalendar();
@@ -117,8 +126,12 @@ public class Engine {
 		JAXBContext jc = JAXBContext.newInstance(order.getClass());
 		Marshaller marsh = jc.createMarshaller();
 		marsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		
 		marsh.marshal(order, new File(poPath+customer.getName()+"_"+order.getId().toString()+".xml"));
-
+/*what to do next is, have the data as some form of a list, maybe search orders by order id or get a map of order 
+ * ids and quantity and calculate the rest of the values here
+ *  and reading file names in the directory and separating the order number so we know what the next order number is
+ *  to add to the next file name*/
 		
 	}
 
