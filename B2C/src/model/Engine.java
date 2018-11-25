@@ -167,5 +167,18 @@ public class Engine {
 			
 			return itemBought;
 		}
+	
+	public List<String> orderList(){
+		List<String> ordersList= new ArrayList<String>();
+		final File folder = new File(poPath);
+		
+		String [] fname = new String [3];
+		for (final File fileEntry : folder.listFiles()) {
+            fname = fileEntry.getName().split("\\.");
+            ordersList.add(fname[0]);
+		}
+		
+		return ordersList;
+	} 
 
 }
