@@ -126,8 +126,19 @@ public class Engine {
 		JAXBContext jc = JAXBContext.newInstance(order.getClass());
 		Marshaller marsh = jc.createMarshaller();
 		marsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		final File folder = new File(poPath);
+		int number = 0;
+		String [] fname = new String [3];
+		 for (final File fileEntry : folder.listFiles()) {
+			 
+		            fname = fileEntry.getName().split("\\.");
+		            fname = fname[0].split("_");
+		    }
+		number = Integer.parseInt(fname[1]);
+		number+=1;
 		
-		marsh.marshal(order, new File(poPath+customer.getName()+"_"+order.getId().toString()+".xml"));
+		
+		marsh.marshal(order, new File(poPath+customer.getName()+"_"+Integer.toString(number)+".xml"));
 /*what to do next is, have the data as some form of a list, maybe search orders by order id or get a map of order 
  * ids and quantity and calculate the rest of the values here
  *  and reading file names in the directory and separating the order number so we know what the next order number is
