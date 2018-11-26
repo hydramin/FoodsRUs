@@ -18,23 +18,9 @@
 	</head>
 	<body>
 		<jsp:include page="/common/header.jspx"/>
-		
-		<div class="container" style="height: 400px; background-color: rgba(255,0,0,0.1);">
-			<div class="row rounded">
-				<div class="col-lg-6" style="background-color: rgba(0,100,255,.1);">
-					<p class="text-justify">
-						Cards assume no specific width to start, so they'll be 100% 
-						wide unless otherwise stated. You can change this as needed 
-						with custom CSS, grid classes, grid Sass mixins, or utilities.
-					</p>
-				</div>
-				
-				<div class="col-lg-6">
-					asdfasdfasdf
-				</div>
-			</div>
-		</div>		
-		
+		<div class="col home bod-siz">
+			<a href="Category.do" class="btn btn-primary btn-light btn-lg centre-page">Get Started</a>
+		</div>
 		<jsp:include page="/common/footer.jspx"/>
 		
 	</body>
