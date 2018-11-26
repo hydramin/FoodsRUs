@@ -16,7 +16,7 @@ import model.ItemBought;
 /**
  * Servlet implementation class Order
  */
-@WebServlet("/Order")
+@WebServlet("/Order.do")
 public class Order extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

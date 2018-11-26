@@ -1,42 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<orderType id="321" submitted="2018-11-25-05:00">
+<orderType id="321" submitted="2018-11-26-05:00">
     <customer account="new account">
         <name>Amin</name>
     </customer>
     <items>
-        <item number="0905A306">
-            <name>R3 Breast Meat</name>
-            <price>6.72</price>
-            <quantity>4</quantity>
-            <extended>26.88</extended>
-        </item>
-        <item number="1409S004">
-            <name>Fudge Ice Cream with Strawberry by AV</name>
-            <price>7.15</price>
-            <quantity>3</quantity>
-            <extended>21.45</extended>
-        </item>
-        <item number="1409S413">
-            <name>K5 Praline Ice Cream</name>
-            <price>6.44</price>
-            <quantity>4</quantity>
-            <extended>25.76</extended>
-        </item>
-        <item number="2002H123">
-            <name>Provolone Cheese by RI</name>
-            <price>3.84</price>
-            <quantity>4</quantity>
-            <extended>15.36</extended>
-        </item>
-        <item number="2910h019">
-            <name>L6 Fruits Cereal</name>
-            <price>3.33</price>
-            <quantity>4</quantity>
-            <extended>13.32</extended>
+        <item number="2002H063">
+            <name>Semi-Cheddar Cheese by JC</name>
+            <price>4.26</price>
+            <quantity>1</quantity>
+            <extended>4.26</extended>
         </item>
     </items>
-    <total>0</total>
+    <total>4.26</total>
     <shipping>12.00</shipping>
-    <HST>0.00</HST>
-    <grandTotal>12.00</grandTotal>
+    <HST>0.55</HST>
+    <grandTotal>16.81</grandTotal>
 </orderType>

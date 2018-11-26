@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<orderType id="321" submitted="2018-11-25-05:00">
+<orderType id="321" submitted="2018-11-26-05:00">
     <customer account="new account">
         <name>Amin</name>
     </customer>
     <items>
-        <item number="2002H063">
-            <name>Semi-Cheddar Cheese by JC</name>
-            <price>4.26</price>
+        <item number="0905A044">
+            <name>Minced Rib Meat by VX</name>
+            <price>6.49</price>
             <quantity>1</quantity>
-            <extended>4.26</extended>
+            <extended>6.49</extended>
+        </item>
+        <item number="1409S039">
+            <name>M8 Peanut Ice Cream</name>
+            <price>4.50</price>
+            <quantity>1</quantity>
+            <extended>4.50</extended>
         </item>
     </items>
-    <total>4.26</total>
+    <total>10.99</total>
     <shipping>12.00</shipping>
-    <HST>0.55</HST>
-    <grandTotal>16.81</grandTotal>
+    <HST>1.43</HST>
+    <grandTotal>24.42</grandTotal>
 </orderType>

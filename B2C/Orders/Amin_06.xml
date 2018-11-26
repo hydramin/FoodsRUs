@@ -1,36 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<orderType id="321" submitted="2018-11-25-05:00">
+<orderType id="321" submitted="2018-11-26-05:00">
     <customer account="new account">
         <name>Amin</name>
     </customer>
     <items>
-        <item number="1409S250">
-            <name>G8 Praline Ice Cream</name>
-            <price>5.06</price>
+        <item number="0905A044">
+            <name>Minced Rib Meat by VX</name>
+            <price>6.49</price>
             <quantity>1</quantity>
-            <extended>5.06</extended>
+            <extended>6.49</extended>
         </item>
-        <item number="2002H063">
-            <name>Semi-Cheddar Cheese by JC</name>
-            <price>4.26</price>
-            <quantity>2</quantity>
-            <extended>8.52</extended>
-        </item>
-        <item number="2002H230">
-            <name>Semi-Swiss Cheese by RI</name>
-            <price>5.43</price>
-            <quantity>4</quantity>
-            <extended>21.72</extended>
-        </item>
-        <item number="2910h129">
-            <name>D4 Almond Cereal</name>
-            <price>2.89</price>
-            <quantity>2</quantity>
-            <extended>5.78</extended>
+        <item number="1409S039">
+            <name>M8 Peanut Ice Cream</name>
+            <price>4.50</price>
+            <quantity>1</quantity>
+            <extended>4.50</extended>
         </item>
     </items>
-    <total>41.08</total>
+    <total>10.99</total>
     <shipping>12.00</shipping>
-    <HST>5.34</HST>
-    <grandTotal>58.42</grandTotal>
+    <HST>1.43</HST>
+    <grandTotal>24.42</grandTotal>
 </orderType>

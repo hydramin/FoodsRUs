@@ -60,12 +60,16 @@ public class OAuth implements Filter {
 			session.setAttribute("username", user);
 			session.setAttribute("fullname", name);
 			session.setAttribute("hash", hash);
+			String s = (String) session.getAttribute("path");
 			
-			if(session.getAttribute("path").equals("/Order.do")) {
-				String param = "?back=http://localhost:8080/B2C_cart_done/Order.do";
-				String oauth = " https://www.eecs.yorku.ca/~roumani/servers/auth/oauth.cgi" + param;
-				res.sendRedirect(oauth);
-				session.removeAttribute("path");
+			if(s != null) {
+				if(s.equals("/Order.do")) {
+//					String param = "?back=http://localhost:4413/B2C/Login.do/Loggedin.do";
+//					String oauth = " https://www.eecs.yorku.ca/~roumani/servers/auth/oauth.cgi" + param;
+					String oauth = req.getContextPath()+"/Order.do";
+					session.removeAttribute("path");
+					res.sendRedirect(oauth);
+				}
 			} else {
 //				String param = "?back=http://localhost:8080/B2C_cart_done/pages/login.jspx";
 //				String oauth = " https://www.eecs.yorku.ca/~roumani/servers/auth/oauth.cgi" + param;
@@ -76,8 +80,9 @@ public class OAuth implements Filter {
 			String username = (String) session.getAttribute("username");
 			if(username == null) {
 				/*not logged in*/
+				System.out.println(req.getServletPath());
 					session.setAttribute("path", req.getServletPath());
-					String param = "?back=http://localhost:8080/B2C_cart_done/Login.do/Loggedin.do";
+					String param = "?back=http://localhost:4413/B2C/Login.do/Loggedin.do";
 					String oauth = " https://www.eecs.yorku.ca/~roumani/servers/auth/oauth.cgi" + param;
 					res.sendRedirect(oauth);
 				
