@@ -153,7 +153,7 @@ public class Engine {
 		return CategoryDAO.retrieve(prefix);
 	}
 	
-	public ItemBought createItem(String productId, String productName, String unitPrice,String _quantity) {
+	public ItemBought createItem(String productId, String productName, String unitPrice,String _quantity, String unit) {
 			
 			ItemBean itemBean = null;
 			ItemBought itemBought = new ItemBought();
@@ -161,7 +161,7 @@ public class Engine {
 				double price = Double.parseDouble(unitPrice);
 				int quantity = Integer.parseInt(_quantity);
 				
-				itemBean = new ItemBean(0, productId, productName, price);
+				itemBean = new ItemBean(0, productId, productName, price, unit);
 				itemBought.setItem(itemBean);
 				itemBought.setQuantity(quantity);
 			} catch (Exception e) {

@@ -62,7 +62,7 @@ public class Cart extends HttpServlet {
 				response.sendRedirect("Items.do");				
 			} else {
 				if(!allproducts.containsKey(productId)) {
-					ItemBought newItem = engine.createItem(productId, productName, unitPrice,quantity);
+					ItemBought newItem = engine.createItem(productId, productName, unitPrice,quantity,"");
 					allproducts.put(productId,newItem);				
 				} else {				
 					ItemBought altered = allproducts.get(productId);
