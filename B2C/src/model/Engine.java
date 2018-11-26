@@ -26,7 +26,7 @@ import Orders.ObjectFactory;
 import Orders.OrderType;
 
 public class Engine {
-	private final String poPath = "/home/user/git/FoodsRUs/B2C/Orders/";
+	private final String poPath = System.getProperty("user.dir") + "/B2C/PO/";
 	private static Engine instance = null;
 	private final double HST = 0.13;
 	private static ObjectFactory factory = new ObjectFactory();
@@ -98,6 +98,17 @@ public class Engine {
 		// date submitted
 		// right now it's just using an absolute path because it's being wacky with
 		// relative paths
+        File Path = new File(poPath);
+        if (!Path.exists()) {
+            try{
+            	Path.getParentFile().mkdirs();
+            	Path.mkdirs();
+            }
+            catch(Exception e){
+                //handle it
+            	throw e;
+            }           
+        }
 		CustomerType customer = factory.createCustomerType();
 		ItemType item1 = factory.createItemType();
 		ItemsType items = factory.createItemsType();
@@ -130,24 +141,28 @@ public class Engine {
 		GregorianCalendar c = new GregorianCalendar();
 		XMLGregorianCalendar date2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
 		order.setSubmitted(date2);
+		
 		final File folder = new File(poPath);
 		int number = 0;
 		String[] fname = new String[3];
 		for (final File fileEntry : folder.listFiles()) {
-
+			if (fileEntry.getName().contains(name))
+			{
 			fname = fileEntry.getName().split("\\.");
 			fname = fname[0].split("_");
+			}
 		}
 		if (fname[1] !=null)
 		number = Integer.parseInt(fname[1]);
 		number += 1;
 
+		
 		JAXBContext jc = JAXBContext.newInstance(order.getClass());
 		Marshaller marsh = jc.createMarshaller();
 		marsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 		marsh.marshal(order,
-				new File(poPath + customer.getName() + "_" + new DecimalFormat("00").format(number) + ".xml"));
-		/* add user from parameter */
+				new File(poPath+ customer.getName() + "_" + new DecimalFormat("00").format(number) + ".xml"));
+
 
 	}
 
@@ -194,7 +209,6 @@ public class Engine {
 		try {
 			JAXBContext jc = JAXBContext.newInstance(ord.getClass());
 			Unmarshaller um = jc.createUnmarshaller();
-			System.out.println(order);
 			ord = (OrderType) um.unmarshal(new File(poPath + order + ".xml"));
 		} catch (Exception e) {
 
