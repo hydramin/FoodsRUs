@@ -30,16 +30,13 @@ public class TestingServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-		//	System.out.println("aasdf asdf");
+			System.out.println("aasdf asdf");
 //			ItemDAO.retrieve(6);
-			
-			Engine engine = Engine.getInstance();
-			request.setAttribute("orders", engine.orderList());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		this.getServletContext().getRequestDispatcher("/pages/orders.jspx").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/common/header.jspx").forward(request, response);
 		
 		
 	}

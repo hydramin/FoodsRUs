@@ -19,12 +19,8 @@
 <body>
 	<jsp:include page='/common/header.jspx' />
 
-	<section class="jumbotron text-center">
-        	<div class="container">
-            	<h1 class="jumbotron-heading">Placed Orders</h1>
-        	</div>
-        </section>
-	<div class="container">
+	<!-- Item bean  -->
+	<div>
 			<c:if test = "${ not empty orders }">		
 				<c:forEach items="${orders}" var="order">
 					<div style="border-style:solid;">

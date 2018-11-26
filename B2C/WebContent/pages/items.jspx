@@ -13,7 +13,7 @@
 <head>
 <title>Search Results</title>
 	
-
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 	<link rel="stylesheet" href="res/b2c.css" />
 	
 		
@@ -53,18 +53,16 @@
              </div>
         </div>
         <div class="col">
-            	<c:forEach items="${items}" var="item"  varStatus="counter">
-   					
-            	
-	                <div class="col-lg-4 inline">
+            	<c:forEach items="${items}" var="item">
+	                <div class="col-12 col-md-6 col-lg-4 inline">
 	                    <div class="card">
-	                        <div class="card-body ">
-	                            <h5 class="card-title">${ item.name }<br/><span class="number">Product ID: ${ item.number }</span></h5>
-	                            
-	                            
+	                        <div class="card-body">
+	                            <h5 class="card-title">${ item.name }</h5>
+	                            <p class="number">Product ID: ${ item.number }</p>
+	                            <p class="price">${ item.price }/${ item.unit } </p>
 	                            <form action="Cart.do" method="POST">
 				  					<span>Quantity to purchase:</span>
-				  					<input class="itemForm" type="number" placeholder="" name="quantity" value="1"/> <span class="price"> ${ item.price }/${ item.unit } </span>
+				  					<input class="itemForm" type="number" placeholder="" name="quantity" value="1"/>
 				  					<input type="hidden" name="productName" value="${ item.name }" />
 				  					<input type="hidden" name="productId" value="${ item.number }" />
 				  					<input type="hidden" name="unitPrice" value="${ item.price }"/>
