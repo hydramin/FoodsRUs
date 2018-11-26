@@ -25,10 +25,11 @@
       <div class="navbar-collapse collapse show" id="navbarsExampleDefault" style="">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="Login.do">Log In</a>
+            <a class="nav-link" href="#">Log In</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="Cart.do">Cart <span class="badge badge-light">3</span></a>
+            
           </li>
           <li class="nav-item">
           	<form action="Items.do" method="POST" class="drop-down styled-select black rounded">
@@ -43,6 +44,7 @@
 		  		</form>
 		  </li>
         </ul>
+        	
         <form class="form-inline my-2 my-lg-0" action="Items.do" method="POST">
           <input type="hidden" name="bySearchTerm" value="bySearchTerm"/>
           <input class="form-control mr-sm-2" type="text" placeholder="Search" name="searchTerm" value="${search}"/>
