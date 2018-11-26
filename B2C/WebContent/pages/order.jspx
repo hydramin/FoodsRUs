@@ -11,12 +11,9 @@
 
 	<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>"${order.id}"</title>
+<title>Order ${order.id}</title>
 </head>
 <body>
-
-
-	<!-- Item bean  -->
 	<div>
 		<c:if test="${ not empty order }">
 			<table border="0">
@@ -39,24 +36,26 @@
 								<th>Extended</th>
 							</tr>
 							<tr>
-							<c:forEach items="${order.items.item}" var="it">
-								<tr><td>${it.number}</td>
-								<td>${it.name}</td>
-								<td>${it.price}</td>
-								<td>${it.quantity}</td>
-								<td>${it.extended}</td></tr>
-							</c:forEach>
+								<c:forEach items="${order.items.item}" var="it">
+									<tr>
+										<td>${it.number}</td>
+										<td>${it.name}</td>
+										<td>${it.price}</td>
+										<td>${it.quantity}</td>
+										<td>${it.extended}</td>
+									</tr>
+								</c:forEach>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-				<td>
-				<p>Sub-Total: ${order.total}</p>
-				<p>HST: ${order.HST}</p>
-				<p>Shipping: ${order.shipping}</p>
-				<p>Grand Total: ${order.grandTotal}</p>
-				</td>
+					<td>
+						<p>Sub-Total: ${order.total}</p>
+						<p>HST: ${order.HST}</p>
+						<p>Shipping: ${order.shipping}</p>
+						<p>Grand Total: ${order.grandTotal}</p>
+					</td>
 				</tr>
 			</table>
 		</c:if>
