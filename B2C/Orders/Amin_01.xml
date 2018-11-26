@@ -4,8 +4,8 @@
         <name>Amin</name>
     </customer>
     <items>
-        <item number="35">
-            <name>cheese</name>
+        <item number="34">
+            <name>chicken</name>
             <price>12</price>
             <quantity>12</quantity>
             <extended>144</extended>

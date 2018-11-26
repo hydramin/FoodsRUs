@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 import Orders.CustomerType;
 import Orders.ItemType;
@@ -93,6 +95,7 @@ public class Engine {
 		CustomerType customer = factory.createCustomerType();
 		
 		ItemType item = factory.createItemType();
+		ItemType item1 = factory.createItemType();
 		ItemsType items = factory.createItemsType();
 		OrderType order = factory.createOrderType();
 		BigDecimal totalPrice;
@@ -100,32 +103,30 @@ public class Engine {
 		customer.setAccount("new account");
 		item.setName("chicken");
 		item.setNumber("34");
-		item.setPrice(new BigDecimal(12.3)); 
+		item.setPrice(new BigDecimal(12.3).setScale(2, BigDecimal.ROUND_HALF_UP)); 
 		item.setQuantity(BigInteger.valueOf( new Integer(3).intValue()));
-		item.setExtended(item.getPrice().multiply(new BigDecimal(item.getQuantity())));
+		item.setExtended(item.getPrice().multiply(new BigDecimal(item.getQuantity())).setScale(2, BigDecimal.ROUND_HALF_UP));
 		totalPrice = item.getExtended();
 		List<ItemType> itemsList = items.getItem();
 		itemsList.add(item);
-		item.setName("cheese");
-		item.setNumber("35");
-		item.setPrice(new BigDecimal(12));
-		item.setQuantity(BigInteger.valueOf( new Integer(12).intValue()));
-		itemsList.add(item);
-		item.setExtended(item.getPrice().multiply(new BigDecimal(item.getQuantity())));
-		totalPrice.add(item.getExtended());
+		item1.setName("cheese");
+		item1.setNumber("35");
+		item1.setPrice(new BigDecimal(12).setScale(2, BigDecimal.ROUND_HALF_UP));
+		item1.setQuantity(BigInteger.valueOf( new Integer(12).intValue()));
+		itemsList.add(item1);
+		item1.setExtended(item1.getPrice().multiply(new BigDecimal(item1.getQuantity())).setScale(2, BigDecimal.ROUND_HALF_UP));
+		totalPrice.add(item1.getExtended());
 		order.setCustomer(customer);
 		order.setItems(items);
 		order.setTotal(totalPrice);
-		order.setShipping(new BigDecimal(12));
-		order.setHST(totalPrice.multiply(new BigDecimal(0.13)));
-		order.setGrandTotal(totalPrice.add(order.getHST().add(order.getShipping())));
+		order.setShipping(new BigDecimal(12).setScale(2, BigDecimal.ROUND_HALF_UP));
+		order.setHST(totalPrice.multiply(new BigDecimal(0.13)).setScale(2, BigDecimal.ROUND_HALF_UP));
+		order.setGrandTotal(totalPrice.add(order.getHST().add(order.getShipping())).setScale(2, BigDecimal.ROUND_HALF_UP));
 		order.setId(BigInteger.valueOf(new Integer(321).intValue()));
 		GregorianCalendar c = new GregorianCalendar();
 		XMLGregorianCalendar date2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
 		order.setSubmitted(date2);
-		JAXBContext jc = JAXBContext.newInstance(order.getClass());
-		Marshaller marsh = jc.createMarshaller();
-		marsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		System.out.println("nice");
 		final File folder = new File(poPath);
 		int number = 0;
 		String [] fname = new String [3];
@@ -137,8 +138,10 @@ public class Engine {
 		number = Integer.parseInt(fname[1]);
 		number+=1;
 		
-		
-		marsh.marshal(order, new File(poPath+customer.getName()+"_"+Integer.toString(number)+".xml"));
+		JAXBContext jc = JAXBContext.newInstance(order.getClass());
+		Marshaller marsh = jc.createMarshaller();
+		marsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		marsh.marshal(order, new File(poPath+customer.getName()+"_"+new DecimalFormat("00").format(number)+".xml"));
 /*what to do next is, have the data as some form of a list, maybe search orders by order id or get a map of order 
  * ids and quantity and calculate the rest of the values here
  *  and reading file names in the directory and separating the order number so we know what the next order number is
@@ -150,7 +153,7 @@ public class Engine {
 		return CategoryDAO.retrieve(prefix);
 	}
 	
-	public ItemBought createItem(String productId, String productName, String unitPrice,String _quantity) {
+	public ItemBought createItem(String productId, String productName, String unitPrice,String _quantity, String unit) {
 			
 			ItemBean itemBean = null;
 			ItemBought itemBought = new ItemBought();
@@ -158,7 +161,7 @@ public class Engine {
 				double price = Double.parseDouble(unitPrice);
 				int quantity = Integer.parseInt(_quantity);
 				
-				itemBean = new ItemBean(0, productId, productName, price);
+				itemBean = new ItemBean(0, productId, productName, price, unit);
 				itemBought.setItem(itemBean);
 				itemBought.setQuantity(quantity);
 			} catch (Exception e) {
@@ -179,6 +182,24 @@ public class Engine {
 		}
 		
 		return ordersList;
+	}
+
+	public OrderType generateOrder(String order) {
+		
+		OrderType ord =factory.createOrderType();
+		try {
+			JAXBContext jc = JAXBContext.newInstance(ord.getClass());
+			Unmarshaller um = jc.createUnmarshaller();
+			ord =(OrderType) um.unmarshal(new File(poPath +order+ ".xml"));
+		}
+		catch(Exception e)
+		{
+			
+				e.getStackTrace();
+			
+		}
+		return ord;
 	} 
+
 
 }

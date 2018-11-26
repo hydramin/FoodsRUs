@@ -6,14 +6,16 @@ public class ItemBean {
 	private String number;
 	private String name;
 	private double price;
+	private String unit;
 	
 	
-	public ItemBean(int catID, String number, String name, double price) {
+	public ItemBean(int catID, String number, String name, double price, String unit) {
 		super();
 		this.catID = catID;
 		this.number = number;
 		this.name = name;
 		this.price = price;
+		this.unit = unit;
 	}
 	
 	public ItemBean() {}
@@ -41,6 +43,12 @@ public class ItemBean {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	public String getUnit() {
+		return unit;
+	}
+	public void setUnit(String unit) {
+		this.unit = unit;
 	}
 	
 	@Override

@@ -21,11 +21,10 @@
 
 	<!-- Item bean  -->
 	<div>
-			<c:if test = "${ not empty ordersList }">
-							
-				<c:forEach items="${ordersList}" var="order">
+			<c:if test = "${ not empty orders }">		
+				<c:forEach items="${orders}" var="order">
 					<div style="border-style:solid;">
-						<a href= "ShowOrders.do?order=${order}">${order}</a>
+						<a href= "ShowOrder.do?order=${order}" style = "display:center">PO${order}</a>
 					</div>
 				</c:forEach>
 				
