@@ -4,21 +4,39 @@
         <name>Amin</name>
     </customer>
     <items>
-        <item number="34">
-            <name>chicken</name>
-            <price>12.30</price>
-            <quantity>3</quantity>
-            <extended>36.90</extended>
+        <item number="0905A306">
+            <name>R3 Breast Meat</name>
+            <price>6.72</price>
+            <quantity>4</quantity>
+            <extended>26.88</extended>
         </item>
-        <item number="35">
-            <name>cheese</name>
-            <price>12.00</price>
-            <quantity>12</quantity>
-            <extended>144.00</extended>
+        <item number="1409S004">
+            <name>Fudge Ice Cream with Strawberry by AV</name>
+            <price>7.15</price>
+            <quantity>3</quantity>
+            <extended>21.45</extended>
+        </item>
+        <item number="1409S413">
+            <name>K5 Praline Ice Cream</name>
+            <price>6.44</price>
+            <quantity>4</quantity>
+            <extended>25.76</extended>
+        </item>
+        <item number="2002H123">
+            <name>Provolone Cheese by RI</name>
+            <price>3.84</price>
+            <quantity>4</quantity>
+            <extended>15.36</extended>
+        </item>
+        <item number="2910h019">
+            <name>L6 Fruits Cereal</name>
+            <price>3.33</price>
+            <quantity>4</quantity>
+            <extended>13.32</extended>
         </item>
     </items>
-    <total>36.90</total>
+    <total>0</total>
     <shipping>12.00</shipping>
-    <HST>4.80</HST>
-    <grandTotal>53.70</grandTotal>
+    <HST>0.00</HST>
+    <grandTotal>12.00</grandTotal>
 </orderType>
