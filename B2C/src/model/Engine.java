@@ -99,11 +99,11 @@ public class Engine {
 		// right now it's just using an absolute path because it's being wacky with
 		// relative paths
 		CustomerType customer = factory.createCustomerType();
-
 		ItemType item1 = factory.createItemType();
 		ItemsType items = factory.createItemsType();
 		OrderType order = factory.createOrderType();
 		List<ItemType> itemsList = items.getItem();
+		BigDecimal total = new BigDecimal(0.00);
 		customer.setName("Amin");
 		customer.setAccount("new account");
 		order.setTotal(BigDecimal.ZERO);
@@ -117,10 +117,10 @@ public class Engine {
 			item.setQuantity(BigInteger.valueOf(new Integer(bought.getQuantity()).intValue()));
 			item.setExtended(
 			item.getPrice().multiply(new BigDecimal(item.getQuantity())).setScale(2, BigDecimal.ROUND_HALF_UP));
-			order.setTotal(order.getTotal().add(item.getExtended().setScale(2, BigDecimal.ROUND_HALF_UP)));
+			total.add(item.getExtended().setScale(2, BigDecimal.ROUND_HALF_UP));
 			itemsList.add(item);
 		}
-		
+		order.setTotal(total);
 		order.setCustomer(customer);
 		order.setItems(items);
 		order.setShipping(new BigDecimal(12).setScale(2, BigDecimal.ROUND_HALF_UP));
@@ -182,20 +182,21 @@ public class Engine {
 			fname = fileEntry.getName().split("\\.");
 			ordersList.add(fname[0]);
 		}
-
+		
 		return ordersList;
 	}
 
 	public OrderType generateOrder(String order) {
 
-		OrderType ord = factory.createOrderType();
+		OrderType ord = new OrderType();
 		try {
 			JAXBContext jc = JAXBContext.newInstance(ord.getClass());
 			Unmarshaller um = jc.createUnmarshaller();
+			System.out.println(order);
 			ord = (OrderType) um.unmarshal(new File(poPath + order + ".xml"));
 		} catch (Exception e) {
 
-			e.getStackTrace();
+			System.out.println(e.getMessage());
 
 		}
 		return ord;
