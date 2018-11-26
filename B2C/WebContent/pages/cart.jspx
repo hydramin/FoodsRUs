@@ -91,6 +91,10 @@
 			<p>Total</p>
 		</div>
 		
+		<form action="Order.do" method="POST">
+			<input type="submit" value="Checkout"/>
+		</form>
+		
 		<jsp:include page="/common/footer.jspx"/>
 		
 	</body>
