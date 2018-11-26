@@ -8,6 +8,18 @@ body.items {
    padding-top: 80px; 
 }
 
+.home
+{
+    background: url(http://northernstyleexposure.com/wp-content/uploads/2017/03/weekly_staples_fromabove.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;  
+    background-attachment: fixed; 
+    background-size: cover;
+    height: 100vh;
+    width:100vw;
+}
+
 .styled-select {
    background: url("../res/dropdown.png") no-repeat 96% 0;
    height: 40px;
@@ -29,11 +41,9 @@ body.items {
 }
 
 .inline {
-	display: inline-block
-}
-
-.card-title {
-	font-weight: bold;
+	display: inline-block;
+	margins: 0px;
+	padding: 0px;
 }
 
 .card-siz {
@@ -56,7 +66,7 @@ body.items {
 	position: absolute;
 }
 
-p.price {
+.price {
 	color: red;
 }
 
@@ -64,11 +74,23 @@ p.price {
 	width: 100px;
 	height: 30px;
 	margin-top: 5px;
-	
 }
 
 .number {
 	color: gray;
+	font-size: 14px;
 }
 
+.card-title {
+	min-height: 100px;
+	font-weight: bold;
+}
 
+.card {
+	margin-bottom: 10px;
+}
+
+.centre-page {
+    position: absolute;
+    top: 50%;
+}
