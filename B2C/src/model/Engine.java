@@ -103,7 +103,7 @@ public class Engine {
 		ItemsType items = factory.createItemsType();
 		OrderType order = factory.createOrderType();
 		List<ItemType> itemsList = items.getItem();
-		BigDecimal total = new BigDecimal(0.00);
+		double total = 0.00;
 		customer.setName("Amin");
 		customer.setAccount("new account");
 		order.setTotal(BigDecimal.ZERO);
@@ -115,12 +115,12 @@ public class Engine {
 			item.setNumber(it.getNumber());
 			item.setPrice(new BigDecimal(it.getPrice()).setScale(2, BigDecimal.ROUND_HALF_UP));
 			item.setQuantity(BigInteger.valueOf(new Integer(bought.getQuantity()).intValue()));
-			item.setExtended(
-			item.getPrice().multiply(new BigDecimal(item.getQuantity())).setScale(2, BigDecimal.ROUND_HALF_UP));
-			total.add(item.getExtended().setScale(2, BigDecimal.ROUND_HALF_UP));
+			item.setExtended(item.getPrice().multiply(new BigDecimal(item.getQuantity())).setScale(2, BigDecimal.ROUND_HALF_UP));
+			total+=item.getExtended().doubleValue();
 			itemsList.add(item);
 		}
-		order.setTotal(total);
+
+		order.setTotal(new BigDecimal(total).setScale(2, BigDecimal.ROUND_HALF_UP));
 		order.setCustomer(customer);
 		order.setItems(items);
 		order.setShipping(new BigDecimal(12).setScale(2, BigDecimal.ROUND_HALF_UP));
@@ -138,6 +138,7 @@ public class Engine {
 			fname = fileEntry.getName().split("\\.");
 			fname = fname[0].split("_");
 		}
+		if (fname[1] !=null)
 		number = Integer.parseInt(fname[1]);
 		number += 1;
 

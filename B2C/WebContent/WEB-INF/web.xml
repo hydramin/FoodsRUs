@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
- <display-name>B2C</display-name>
- 
-<welcome-file-list>
+  <display-name>B2C</display-name>
+  <welcome-file-list>
     <welcome-file>Home.do</welcome-file>
-</welcome-file-list>
-  
- <filter>
+  </welcome-file-list>
+  <filter>
     <filter-name>OAuth</filter-name>
     <filter-class>adhoc.OAuth</filter-class>
-</filter>
-
-<filter-mapping>
+  </filter>
+  <filter-mapping>
     <filter-name>OAuth</filter-name>
     <url-pattern>/Order.do</url-pattern>
     <url-pattern>/Login.do</url-pattern>
     <url-pattern>/Login.do/Loggedin.do</url-pattern>
-</filter-mapping>
+  </filter-mapping>
 </web-app>

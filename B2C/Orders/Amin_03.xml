@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<orderType id="321" submitted="2018-11-25-05:00">
+<orderType id="321" submitted="2018-11-26-05:00">
     <customer account="new account">
         <name>Amin</name>
     </customer>
     <items>
-        <item number="34">
-            <name>chicken</name>
-            <price>12.30</price>
-            <quantity>3</quantity>
-            <extended>36.90</extended>
+        <item number="1409S004">
+            <name>Fudge Ice Cream with Strawberry by AV</name>
+            <price>7.15</price>
+            <quantity>1</quantity>
+            <extended>7.15</extended>
         </item>
-        <item number="35">
-            <name>cheese</name>
-            <price>12.00</price>
-            <quantity>12</quantity>
-            <extended>144.00</extended>
+        <item number="1409S123">
+            <name>E8 Nuts Ice Cream</name>
+            <price>6.12</price>
+            <quantity>1</quantity>
+            <extended>6.12</extended>
+        </item>
+        <item number="2002H063">
+            <name>Semi-Cheddar Cheese by JC</name>
+            <price>4.26</price>
+            <quantity>1</quantity>
+            <extended>4.26</extended>
+        </item>
+        <item number="2002H230">
+            <name>Semi-Swiss Cheese by RI</name>
+            <price>5.43</price>
+            <quantity>1</quantity>
+            <extended>5.43</extended>
         </item>
     </items>
-    <total>36.90</total>
+    <total>22.96000000000000085265128291212022304534912109375</total>
     <shipping>12.00</shipping>
-    <HST>4.7970000000000001638689184346731053665280342102050781250</HST>
-    <grandTotal>53.70</grandTotal>
+    <HST>2.98</HST>
+    <grandTotal>37.94</grandTotal>
 </orderType>
