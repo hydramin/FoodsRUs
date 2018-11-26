@@ -1,6 +1,11 @@
 @charset "UTF-8";
+
 body {
    padding-top: 50px; 
+}
+
+body.items {
+   padding-top: 80px; 
 }
 
 .styled-select {
