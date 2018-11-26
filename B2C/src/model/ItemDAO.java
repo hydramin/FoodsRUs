@@ -138,7 +138,7 @@ public class ItemDAO {
 
 			while (r.next()) {
 				ItemBean bean = new ItemBean(r.getInt("CATID"), r.getString("NUMBER"), r.getString("NAME"),
-						r.getDouble("PRICE"));
+						r.getDouble("PRICE"), r.getString("UNIT"));
 				result.add(bean);
 			}
 			r.close();
@@ -184,7 +184,7 @@ public class ItemDAO {
 			r = s.executeQuery();
 			while (r.next()) {
 				ItemBean bean = new ItemBean(r.getInt("CATID"), r.getString("NUMBER"), r.getString("NAME"),
-						r.getDouble("PRICE"));
+						r.getDouble("PRICE"), r.getString("UNIT"));
 				result.add(bean);
 			}
 			r.close();

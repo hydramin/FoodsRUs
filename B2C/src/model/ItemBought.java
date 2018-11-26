@@ -46,8 +46,8 @@ public class ItemBought {
 	
 	public static void main(String[] args) {
 		// String productId, String productName, String unitPrice,String _quantity) {
-		ItemBought bean1 = Engine.getInstance().createItem("123asdf","xyz","1.23","34");
-		ItemBought bean2 = Engine.getInstance().createItem("123asdf","xyzer","15.23","534");
+		ItemBought bean1 = Engine.getInstance().createItem("123asdf","xyz","1.23","34","EA");
+		ItemBought bean2 = Engine.getInstance().createItem("123asdf","xyzer","15.23","534","EA");
 		if(bean1.equals(bean1)) {System.out.println("equals");}else  System.out.println("not equal");
 	}
 }
