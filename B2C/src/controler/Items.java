@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.CategoryBean;
 import model.Engine;
 import model.ItemBean;
 
@@ -75,6 +76,10 @@ public class Items extends HttpServlet {
 				session.setAttribute("searchTerm", searchTerm);
 				
 				request.setAttribute("items", list);
+				
+				List<CategoryBean> categories = engine.doCategory("");
+				request.setAttribute("categories", categories);
+				
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}

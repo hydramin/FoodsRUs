@@ -12,36 +12,74 @@
 	<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Search Results</title>
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	rel="stylesheet" />
+	
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="res/b2c.css" />
+	
+		
+	
 </head>
-<body>
+<body class="items">
 	<jsp:include page='/common/header.jspx' />
 
 	<!-- Item bean  -->
-	<div>
-			<c:if test = "${ not empty items }">
-							
-				<c:forEach items="${items}" var="item">
-					<div style="border-style:solid;">
-						<p>${ item.name }</p>
-						<p>Product ID: ${ item.number }</p> 
-						<p>Unit Price: ${ item.price }</p>
-						<form action="Cart.do" method="POST">
-				  			<span>Quantity to purchase:</span>
-				  			<input type="number" placeholder="" name="quantity" value="1"/>
-				  			<input type="hidden" name="productName" value="${ item.name }" />
-				  			<input type="hidden" name="productId" value="${ item.number }" />
-				  			<input type="hidden" name="unitPrice" value="${ item.price }"/>
-							<input type="submit" name="addToCart" value="Add to Cart"/>
-						</form>
-						<!-- ${ item.catID }</p> -->
-					</div>
-				</c:forEach>
-				
-			</c:if>
-		</div>
+	
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-3">
+        <c:if test = "${ not empty categories}">
+            <div class="card bg-light mb-3">
+                <div class="card-header bg-primary text-white text-uppercase"><i class="fa "></i> Categories</div>
+                <ul class="list-group category_block">
+                	<c:forEach items="${categories}" var="cat">
+                    	<li class="list-group-item"> <a href="Items.do?catID=${cat.id}&amp;byCategoryId=byCategoryId">${cat.name}</a></li>
+					</c:forEach>
+                </ul>
+            </div>
+        </c:if>  
+        	<div id="listener"> 
+            <!-- for the listener
+            <div class="card bg-light mb-3">
+                <div class="card-header bg-success text-white text-uppercase">Last product</div>
+                <div class="card-body">
+                    
+                    <h5 class="card-title">Product title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="bloc_left_price">99.00 $</p>
+                </div>
+            </div>
+            
+             -->
+             </div>
+        </div>
+        <div class="col">
+            	<c:forEach items="${items}" var="item">
+	                <div class="col-12 col-md-6 col-lg-4 inline">
+	                    <div class="card">
+	                        <div class="card-body">
+	                            <h5 class="card-title">${ item.name }</h5>
+	                            <p class="number">Product ID: ${ item.number }</p>
+	                            <p class="price">${ item.price }/${ item.unit } </p>
+	                            <form action="Cart.do" method="POST">
+				  					<span>Quantity to purchase:</span>
+				  					<input class="itemForm" type="number" placeholder="" name="quantity" value="1"/>
+				  					<input type="hidden" name="productName" value="${ item.name }" />
+				  					<input type="hidden" name="productId" value="${ item.number }" />
+				  					<input type="hidden" name="unitPrice" value="${ item.price }"/>
+									<input class="itemForm btn btn-success btn-block" type="submit" name="addToCart" value="Add to Cart"/>
+								</form> 
+	                        </div>
+	                    </div>
+	                </div>
+	            </c:forEach>
+                
+            
+        </div>
+
+    </div>
+</div>
+	
+	
 
 	<jsp:include page="/common/footer.jspx" />
 </body>
