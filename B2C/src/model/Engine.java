@@ -86,7 +86,7 @@ public class Engine {
 
 	}
 
-	public void createOrders(TreeMap<String, ItemBought> allproducts)
+	public void createOrders(String name, String userName, TreeMap<String, ItemBought> allproducts)
 			throws DatatypeConfigurationException, JAXBException, IOException {
 		// Using an object factory, we're creating an object that'll be parsed by the
 		// marshaller to make an xml file
@@ -104,8 +104,8 @@ public class Engine {
 		OrderType order = factory.createOrderType();
 		List<ItemType> itemsList = items.getItem();
 		double total = 0.00;
-		customer.setName("Amin");
-		customer.setAccount("new account");
+		customer.setName(name);
+		customer.setAccount(userName);
 		order.setTotal(BigDecimal.ZERO);
 		for (Map.Entry<String, ItemBought> entry : allproducts.entrySet()) {
 			ItemBought bought = entry.getValue();
@@ -174,13 +174,14 @@ public class Engine {
 		return itemBought;
 	}
 
-	public List<String> orderList() {
+	public List<String> orderList(String name) {
 		List<String> ordersList = new ArrayList<String>();
 		final File folder = new File(poPath);
 
 		String[] fname = new String[3];
 		for (final File fileEntry : folder.listFiles()) {
 			fname = fileEntry.getName().split("\\.");
+			if (fname[0].contains(name))
 			ordersList.add(fname[0]);
 		}
 		

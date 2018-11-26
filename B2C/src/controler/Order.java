@@ -37,8 +37,10 @@ public class Order extends HttpServlet {
 		try {
 			@SuppressWarnings("unchecked")
 			TreeMap<String, ItemBought> allproducts = (TreeMap<String, ItemBought>) session.getAttribute("currentCart");
-			engine.createOrders(allproducts);
-			request.setAttribute("orders", engine.orderList());
+			String name = (String) session.getAttribute("fullname");System.out.println(name);
+			String userName = (String) session.getAttribute("username");System.out.println(userName);
+			engine.createOrders(name, userName, allproducts);
+			request.setAttribute("orders", engine.orderList(name));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

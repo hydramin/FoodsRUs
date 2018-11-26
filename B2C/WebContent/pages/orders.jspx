@@ -11,7 +11,7 @@
 
 	<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Search Results</title>
+<title>see Orders</title>
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	rel="stylesheet" />
@@ -19,18 +19,23 @@
 <body>
 	<jsp:include page='/common/header.jspx' />
 
-	<!-- Item bean  -->
-	<div>
-			<c:if test = "${ not empty orders }">		
-				<c:forEach items="${orders}" var="order">
-					<div style="border-style:solid;">
-						<a href= "ShowOrder.do?order=${order}" style = "display:center">PO${order}</a>
-					</div>
-				</c:forEach>
-				
-			</c:if>
 
+	<section class="jumbotron text-center">
+		<div class="container">
+			<h1 class="jumbotron-heading">view your orders</h1>
 		</div>
+	</section>
+	<div class="container">
+		<c:if test="${ not empty orders }">
+			<c:forEach items="${orders}" var="order">
+				<div style="border-style: solid;">
+					<a href="ShowOrder.do?order=${order}" style="display: center">PO${order}</a>
+				</div>
+			</c:forEach>
+
+		</c:if>
+
+	</div>
 
 	<jsp:include page="/common/footer.jspx" />
 </body>
