@@ -55,3 +55,20 @@ body.items {
 .test {
 	position: absolute;
 }
+
+p.price {
+	color: red;
+}
+
+.itemForm {
+	width: 100px;
+	height: 30px;
+	margin-top: 5px;
+	
+}
+
+.number {
+	color: gray;
+}
+
+
