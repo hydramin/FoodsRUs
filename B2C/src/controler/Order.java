@@ -35,7 +35,7 @@ public class Order extends HttpServlet {
 		Engine engine = Engine.getInstance();
 		try {
 			engine.createOrders();
-			request.setAttribute("ordersList", engine.orderList());
+			request.setAttribute("orders", engine.orderList());
 		}
 		catch(Exception e){System.out.println(e.getMessage()); }
 		this.getServletContext().getRequestDispatcher("/pages/orders.jspx").forward(request, response);

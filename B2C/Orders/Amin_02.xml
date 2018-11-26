@@ -4,21 +4,21 @@
         <name>Amin</name>
     </customer>
     <items>
-        <item number="35">
-            <name>cheese</name>
-            <price>12</price>
-            <quantity>12</quantity>
-            <extended>144</extended>
+        <item number="34">
+            <name>chicken</name>
+            <price>12.300000000000000710542735760100185871124267578125</price>
+            <quantity>3</quantity>
+            <extended>36.90</extended>
         </item>
         <item number="35">
             <name>cheese</name>
             <price>12</price>
             <quantity>12</quantity>
-            <extended>144</extended>
+            <extended>144.00</extended>
         </item>
     </items>
-    <total>36.900000000000002131628207280300557613372802734375</total>
+    <total>36.90</total>
     <shipping>12</shipping>
-    <HST>4.79700000000000044098058538111218732259736121781549306574278339343475607847722130827605724334716796875</HST>
-    <grandTotal>53.69700000000000257260879266141274493597016395219049306574278339343475607847722130827605724334716796875</grandTotal>
+    <HST>4.7970000000000001638689184346731053665280342102050781250</HST>
+    <grandTotal>53.70</grandTotal>
 </orderType>

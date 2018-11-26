@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Engine;
+
 /**
  * Servlet implementation class ShowOrder
  */
@@ -28,6 +30,15 @@ public class ShowOrder extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Engine engine = Engine.getInstance();
+		String order = request.getParameter("order");
+		try {
+			request.setAttribute("order", engine.generateOrder(order));
+			
+			
+		}
+		catch(Exception e){System.out.println(e.getMessage()); }
+		this.getServletContext().getRequestDispatcher("/pages/order.jspx").forward(request, response);
 	}
 
 	/**
