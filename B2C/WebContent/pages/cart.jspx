@@ -45,12 +45,14 @@
 												<tr>
 													<td>${ item.item.number }</td>
 													<td>${ item.item.name }</td>
-													<td class="text-right">${ item.item.price }</td>
+													<td class="text-right"><fmt:formatNumber
+															value="${ item.item.price }" type = "currency"/></td>
 													<td class="text-right"><input size="3" value="${item.quantity}"
 														name="${item.item.number}_quantity" type="number" /></td>
 													<td class="text-right"><c:set var="total"
 															value="${item.quantity * item.item.price }" /> <c:set
-															var="myfinal" value="${ myfinal + total }" /> <span>${total}
+															var="myfinal" value="${ myfinal + total }" /> <span><fmt:formatNumber
+															value="${total}" type = "currency"/>
 													</span></td>
 													<td class="text-right">Delete <input type="checkbox"
 														name="${item.item.number}_delete" value="delete" />
@@ -63,7 +65,8 @@
 												<td></td>
 												<td></td>
 												<td class="text-right">Sub-Total</td>
-												<td class="text-right">${myfinal}</td>
+												<td class="text-right"><td class="text-right"><fmt:formatNumber
+															value="${myfinal}" type = "currency"/></td></td>
 												<td></td>
 											</tr>
 											<tr>
@@ -71,8 +74,15 @@
 												<td></td>
 												<td></td>
 												<td class="text-right">Shipping</td>
-												<c:if test ="${myfinal<100}" >
-												<td class="text-right" value=>5</td>
+												<c:if test="${myfinal lt 100}">
+													
+													<td class="text-right"><fmt:formatNumber value="5"
+															type="currency" /></td>
+												</c:if>
+												<c:if test="${myfinal ge 100}">
+													
+													<td class="text-right"><fmt:formatNumber value="0"
+															type="currency" /></td>
 												</c:if>
 												
 												

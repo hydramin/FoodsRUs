@@ -137,7 +137,6 @@ public class Engine {
 		order.setShipping(new BigDecimal(12).setScale(2, BigDecimal.ROUND_HALF_UP));
 		order.setHST(order.getTotal().multiply(new BigDecimal(HST)).setScale(2, BigDecimal.ROUND_HALF_UP));
 		order.setGrandTotal(order.getTotal().add(order.getHST().add(order.getShipping())).setScale(2, BigDecimal.ROUND_HALF_UP));
-		order.setId(BigInteger.valueOf(new Integer(321).intValue()));
 		GregorianCalendar c = new GregorianCalendar();
 		XMLGregorianCalendar date2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
 		order.setSubmitted(date2);
@@ -155,6 +154,7 @@ public class Engine {
 		if (fname[1] !=null)
 		number = Integer.parseInt(fname[1]);
 		number += 1;
+		order.setId(BigInteger.valueOf(number));
 
 		
 		JAXBContext jc = JAXBContext.newInstance(order.getClass());

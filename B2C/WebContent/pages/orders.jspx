@@ -28,7 +28,7 @@
 	<div class="container">
 		<c:if test="${ not empty orders }">
 			<c:forEach items="${orders}" var="order">
-				<div style="border-style: solid;">
+				<div style="text-align:center">
 					<a href="ShowOrder.do?order=${order}" style="display: center">PO${order}</a>
 				</div>
 			</c:forEach>
