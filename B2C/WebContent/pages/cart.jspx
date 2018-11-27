@@ -93,7 +93,7 @@
 												<td></td>
 												<td></td>
 												<td class="text-right">HST</td>
-												<td class="text-right"></td>
+												<td class="text-right"><fmt:formatNumber value = "${myfinal * 0.13}" type = "currency"/></td>
 												<td></td>
 											</tr>
 											<tr>
@@ -101,7 +101,8 @@
 												<td></td>
 												<td></td>
 												<td class="text-right"><strong>Grand Total</strong></td>
-												<td class="text-right"><strong></strong></td>
+												<td class="text-right"><strong> <fmt:formatNumber value = "${(myfinal * 0.13) + myfinal}" 
+         type = "currency"/></strong></td>
 												<td></td>
 											</tr>
 											<tr>
