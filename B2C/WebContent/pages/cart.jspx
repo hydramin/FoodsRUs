@@ -71,7 +71,11 @@
 												<td></td>
 												<td></td>
 												<td class="text-right">Shipping</td>
-												<td class="text-right"></td>
+												<c:if test ="${myfinal<100}" >
+												<td class="text-right" value=>5</td>
+												</c:if>
+												
+												
 												<td></td>
 											</tr>
 											<tr>
