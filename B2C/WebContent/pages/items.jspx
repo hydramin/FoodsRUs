@@ -64,7 +64,7 @@
 	                            
 	                            <form action="Cart.do" method="POST">
 				  					<span>Quantity to purchase:</span>
-				  					<input class="itemForm" type="number" placeholder="" name="quantity" value="1"/> <span class="price">  <fmt:formatNumber value="${ item.price }" type = "currency"/>/${ item.unit }/${ item.unit } </span>
+				  					<input class="itemForm" type="number" placeholder="" name="quantity" value="1"/> <span class="price">  <fmt:formatNumber value="${ item.price }" type = "currency"/>/${ item.unit } </span>
 				  					<input type="hidden" name="productName" value="${ item.name }" />
 				  					<input type="hidden" name="productId" value="${ item.number }" />
 				  					<input type="hidden" name="unitPrice" value="${ item.price }"/>
